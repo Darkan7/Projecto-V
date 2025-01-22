@@ -60,4 +60,14 @@ public static class Utilidades
 
             return pos;
     }
+
+    public static Vector3 GetCentroCelda(int posX, int posY, float tamCel)
+    {
+        Vector3 center = Vector3.zero;
+
+        center.x = posX * tamCel + tamCel / 2;
+        center.z = posY * tamCel + tamCel / 2;
+
+        return center;
+    }
 }

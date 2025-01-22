@@ -27,7 +27,12 @@ public class PruebaMapa : MonoBehaviour
             Vector3 pos = Utilidades.GetPosicionMundo();
             
             celdaMovimiento celda = cuadricula.GetCelda(pos);
-            Debug.Log(celda);
+
+            if (celda != null)
+            {
+                Debug.Log(celda);
+                Debug.Log(Utilidades.GetCentroCelda(celda.x, celda.y, cuadricula.GetTamCelda()));
+            }
         }
     }
     
@@ -37,7 +42,9 @@ public class PruebaMapa : MonoBehaviour
 public class celdaMovimiento
 {
     private string texto = "";
-    
+
+    enum CentroCelda { Aliado, Enemigo, Vacia};
+
     //Cuadrícula al que pertenece esta celda y posición en ella
     public Cuadricula<celdaMovimiento> cuadricula;
     public int x;
@@ -48,7 +55,7 @@ public class celdaMovimiento
         this.cuadricula = cuadricula;
         this.x = x;
         this.y = y;
-        texto = x + " - " + y;
+        texto = this.x + " - " + this.y;
     }
 
     public override string ToString()
