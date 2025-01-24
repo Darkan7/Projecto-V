@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using DG.Tweening;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Enemy : MonoBehaviour
 {
@@ -26,7 +27,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (_speed != 0) Moveleft();
-        
+
+        celdaMovimiento celda = GameManager.Instance.cuadricula.GetCelda(transform.position);
+
+        /*if (celda == null) return;
+        if (celda.interiorcelda == celdaMovimiento.InteriorCelda.Aliado) return; //Interactuar con el aliado
+        */
+
+
     }
 
     void Moveleft()

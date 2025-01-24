@@ -22,14 +22,13 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("f"))
-        {
-            spawnCoroutine = false;
-        }
+
     }
 
     public void SetSpawns(Cuadricula<celdaMovimiento> cuadricula)
     {
+        if (GameManager.Instance.noEnemySpawn) return;
+
         for (int i = 0; i < spawns.Length; i++)
         {
             spawns[i].transform.position = new Vector3(cuadricula.GetAncho() * cuadricula.GetTamCelda() + 10, 0 ,cuadricula.GetTamCelda()/2 + cuadricula.GetTamCelda() * i);
